@@ -8,32 +8,51 @@
 import SwiftUI
 
 struct GameSettingsView: View {
-    @State var numberOfPlayers = 3
-    @State var numberOfSpies = 1
+    @ObservedObject var viewModel = ViewModel()
     
     var body: some View {
         VStack {
             Form {
                 HStack {
-                    Stepper("Number of players", value: $numberOfPlayers, in: 3...10)
+                    Stepper("Number of players", value: $viewModel.numberOfPlayers, in: 3...10)
                         .padding()
+                        .onChange(of: viewModel.numberOfPlayers, perform: { _ in
+                            viewModel.setupGame() // look very inefficient
+                        })
                     
-                    Text("\(numberOfPlayers)")
+                    Text("\(viewModel.numberOfPlayers)")
                 }
                 
                 HStack {
-                    Stepper("Number of spies", value: $numberOfSpies, in: 1...2)
+                    Stepper("Number of spies", value: $viewModel.numberOfSpies, in: 1...2)
+                        .disabled(isSpyStepperDisabled())
                         .padding()
+                        .onChange(of: viewModel.numberOfSpies, perform: { _ in
+                            viewModel.setupGame()  // look very inefficient
+                        })
                     
-                    Text("\(numberOfSpies)")
+                    Text("\(viewModel.numberOfSpies)")
                 }
             }
             
             Spacer()
             
-            NavigationLink("Start Game", destination: GameView(viewModel: ViewModel(numOfPlayers: numberOfPlayers)))
+            NavigationLink("Start Game",
+                           destination: GameView(viewModel: viewModel))
+                
         }
         
+    }
+    
+    private func reduceSpies() {
+        if viewModel.numberOfPlayers < 6 && viewModel.numberOfSpies == 2 {
+            viewModel.numberOfSpies = 1
+        }
+    }
+    
+    private func isSpyStepperDisabled() -> Bool {
+        reduceSpies()
+        return viewModel.numberOfPlayers < 6
     }
 }
 

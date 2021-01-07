@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GameView: View {
     @ObservedObject var viewModel: ViewModel
+    
     var body: some View {
         List {
             ForEach(viewModel.players) { player in
@@ -27,6 +28,6 @@ struct GameView: View {
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
-        GameView(viewModel: ViewModel(numOfPlayers: 3))
+        GameView(viewModel: ViewModel(numOfPlayers: 3, andSpies: 1))
     }
 }

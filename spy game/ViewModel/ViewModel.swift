@@ -10,11 +10,13 @@ import Combine
 
 class ViewModel: ObservableObject {
     @Published var players = [Player]()
-    @Published private(set) var numberOfPlayers = 3
+    @Published var numberOfPlayers = 3
+    @Published var numberOfSpies = 1
     @Published private(set) var currentLocation = Location()
     
-    init(numOfPlayers: Int) {
+    init(numOfPlayers: Int, andSpies spies: Int) {
         numberOfPlayers = numOfPlayers
+        numberOfSpies = spies
         setupGame()
     }
     
@@ -26,6 +28,7 @@ class ViewModel: ObservableObject {
     ]
     
     public func setupGame() {
+        players = []
         currentLocation = locations.randomElement()!
         var roles = currentLocation.roles.shuffled()
         
@@ -35,9 +38,5 @@ class ViewModel: ObservableObject {
         }
         players.append(Player(isSpy: true))
         players.shuffle()
-    }
-    
-    public func setNumberOfPlayers(_ num: Int) {
-        numberOfPlayers = num
     }
 }
