@@ -11,18 +11,19 @@ struct GameView: View {
     @ObservedObject var viewModel: ViewModel
     
     var body: some View {
-        List {
-            ForEach(viewModel.players) { player in
-                HStack {
-                    if !player.isSpy {
-                        Text("\(player.location), \(player.role)")
-                    } else {
-                        Text("You are a spy!")
-                            .foregroundColor(.red)
-                    }
-                }
-            }
-        }
+        CardView(player: Player(isSpy: true))
+//        List {
+//            ForEach(viewModel.players) { player in
+//                HStack {
+//                    if !player.isSpy {
+//                        Text("\(player.location), \(player.role)")
+//                    } else {
+//                        Text("You are a spy!")
+//                            .foregroundColor(.red)
+//                    }
+//                }
+//            }
+//        }
     }
 }
 

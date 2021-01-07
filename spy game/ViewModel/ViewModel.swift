@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class ViewModel: ObservableObject {
-    @Published var players = [Player]()
+    @Published var players = [CardView]()
     @Published var numberOfPlayers = 3
     @Published var numberOfSpies = 1
     @Published private(set) var currentLocation = Location()
@@ -33,10 +33,10 @@ class ViewModel: ObservableObject {
         var roles = currentLocation.roles.shuffled()
         
         for _ in 0..<numberOfPlayers-1 {
-            players.append(Player(location: currentLocation.name,
-                                  role:     roles.popLast()!))
+            players.append(CardView(player: Player(location: currentLocation.name,
+                                                   role:     roles.popLast()!)))
         }
-        players.append(Player(isSpy: true))
+        players.append(CardView(player: Player(isSpy: true)))
         players.shuffle()
     }
 }
