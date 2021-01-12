@@ -16,13 +16,6 @@ struct CardView: View {
             RoundedRectangle(cornerRadius: 20)
                 .foregroundColor(!isFlipped ? .black : .red)
                 .padding()
-                .rotation3DEffect(self.isFlipped ? Angle(degrees: 180) : Angle(degrees: 0),
-                                  axis: (x: CGFloat(0),
-                                         y: CGFloat(10),
-                                         z: CGFloat(0)
-                                  )
-                )
-                .animation(.default)
                 .onTapGesture {
                     self.isFlipped.toggle()
                 }
@@ -42,9 +35,18 @@ struct CardView: View {
                 }
                 
             }
+            // FIXME: - make text flip animation more smooth
             .foregroundColor(!isFlipped ? .init(CGColor(gray: 0, alpha: 0)) : .white)
             .animation(.easeInOut)
+            .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
         }
+        .rotation3DEffect(self.isFlipped ? Angle(degrees: 180) : Angle(degrees: 0),
+                          axis: (x: CGFloat(0),
+                                 y: CGFloat(10),
+                                 z: CGFloat(0)
+                          )
+        )
+        .animation(.default)
         
     }
 }
