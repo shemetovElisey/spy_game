@@ -10,6 +10,11 @@ import SwiftUI
 struct GameSettingsView: View {
     @ObservedObject var viewModel = ViewModel()
     
+    init() {
+        viewModel = ViewModel()
+        viewModel.setupGame()
+    }
+    
     var body: some View {
         VStack {
             Form {
@@ -17,6 +22,7 @@ struct GameSettingsView: View {
                     Stepper("Number of players", value: $viewModel.numberOfPlayers, in: 3...10)
                         .padding()
                         .onChange(of: viewModel.numberOfPlayers, perform: { _ in
+                            viewModel.makeCardsToShowEmpty()
                             viewModel.setupGame() // look very inefficient
                         })
                     
@@ -28,6 +34,7 @@ struct GameSettingsView: View {
                         .disabled(isSpyStepperDisabled())
                         .padding()
                         .onChange(of: viewModel.numberOfSpies, perform: { _ in
+                            viewModel.makeCardsToShowEmpty()
                             viewModel.setupGame()  // look very inefficient
                         })
                     
@@ -37,9 +44,9 @@ struct GameSettingsView: View {
             
             Spacer()
             
+            // FIXME: - make new game on tap nav link
             NavigationLink("Start Game",
                            destination: GameView(viewModel: viewModel))
-                
         }
         
     }

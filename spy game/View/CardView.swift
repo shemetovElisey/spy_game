@@ -7,9 +7,13 @@
 
 import SwiftUI
 
-struct CardView: View {
+struct CardView: View, Identifiable {
+    var id = UUID()
+    
     @State var isFlipped = false
     @State var player: Player
+    
+    var playerNumber: Int
 
     var body: some View {
         ZStack {
@@ -21,22 +25,28 @@ struct CardView: View {
                 }
             
             VStack {
-                if player.isSpy {
-                    Text("You are a Spy!!!")
-                        .font(.title)
-                        .bold()
+                if isFlipped {
+                    if player.isSpy {
+                        Text("You are a Spy!!!")
+                            .font(.title)
+                            .bold()
+                    } else {
+                        Text(player.location)
+                            .font(.title)
+                            .bold()
+                        
+                        Text(player.role)
+                            .font(.title2)
+                    }
                 } else {
-                    Text(player.location)
+                    Text("Player №\(playerNumber)")
                         .font(.title)
                         .bold()
-                    
-                    Text(player.role)
-                        .font(.title2)
+                        .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
                 }
                 
             }
-            // FIXME: - make text flip animation more smooth
-            .foregroundColor(!isFlipped ? .init(CGColor(gray: 0, alpha: 0)) : .white)
+            .foregroundColor(.white)
             .animation(.easeInOut)
             .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
         }

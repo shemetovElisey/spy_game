@@ -17,6 +17,7 @@
 		3CCCCF7225A4E0320086DE1D /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCCCF7125A4E0320086DE1D /* LocationModel.swift */; };
 		3CCCCF7825A4E33F0086DE1D /* GameSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCCCF7725A4E33F0086DE1D /* GameSettingsView.swift */; };
 		3CCCCF7D25A4EE190086DE1D /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCCCF7C25A4EE190086DE1D /* GameView.swift */; };
+		3CE2089225B385F1003F7440 /* AnyTransition+trailingBottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE2089125B385F1003F7440 /* AnyTransition+trailingBottom.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		3CCCCF7125A4E0320086DE1D /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		3CCCCF7725A4E33F0086DE1D /* GameSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettingsView.swift; sourceTree = "<group>"; };
 		3CCCCF7C25A4EE190086DE1D /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		3CE2089125B385F1003F7440 /* AnyTransition+trailingBottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyTransition+trailingBottom.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +99,9 @@
 			children = (
 				3CCCCF5D25A4DB330086DE1D /* ContentView.swift */,
 				3CCCCF7725A4E33F0086DE1D /* GameSettingsView.swift */,
-				3CA45C2825A7A2EA00D72F3E /* CardView.swift */,
 				3CCCCF7C25A4EE190086DE1D /* GameView.swift */,
+				3CA45C2825A7A2EA00D72F3E /* CardView.swift */,
+				3CE2089125B385F1003F7440 /* AnyTransition+trailingBottom.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 				3CCCCF6C25A4DBD70086DE1D /* PlayerModel.swift in Sources */,
 				3CCCCF5E25A4DB330086DE1D /* ContentView.swift in Sources */,
 				3CCCCF6F25A4DC350086DE1D /* ViewModel.swift in Sources */,
+				3CE2089225B385F1003F7440 /* AnyTransition+trailingBottom.swift in Sources */,
 				3CCCCF7225A4E0320086DE1D /* LocationModel.swift in Sources */,
 				3CCCCF5C25A4DB330086DE1D /* spy_gameApp.swift in Sources */,
 				3CCCCF7825A4E33F0086DE1D /* GameSettingsView.swift in Sources */,
